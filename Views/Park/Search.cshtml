@@ -1,0 +1,104 @@
+﻿
+@model IEnumerable<NatureNexus.Models.Park>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="input-field col s12">
+            <div class="card">
+                <div class="card-content">
+                    <form asp-action="Search" method="get">
+                        <div class="row center-align">
+                            <h5>Find A Park To Visit!</h5>
+                            <h6>(Enter at least one field. For the park name you can enter partial phrases.)</h6>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col m4">
+                                <select name="statename">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    @foreach(var item in ViewBag.statedict.Keys)
+                                    {
+                                        <option value="@item">@ViewBag.statedict[item]</option>
+                                    }
+                                </select>
+                                <label>State</label>
+                            </div>
+                            <div class="input-field col m4">
+                                <select name="activityname">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    @foreach (var item in ViewBag.anames)
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
+                                </select>
+                                <label>Activity</label>
+                            </div>
+                            <div class="input-field col m4">
+                                <select name="topicname">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    @foreach (var item in ViewBag.tnames)
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
+                                </select>
+                                <label>Topics</label>
+                            </div>
+                            <div class="col s12">
+                                <input placeholder="XYZ National Park" name="parkname" type="text" class="validate">
+                                <label for="parkname">Name of the Park</label>
+                            </div>
+                            <div class="col s12 right-align">
+                                <button class="btn waves-effect waves-light" type="submit" value="Search">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col s12 center-align">
+            <h4>These are your available options to choose from</h4>
+        </div>
+
+        @foreach (var item in Model)
+        {
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">
+                            @Html.DisplayFor(modelItem => item.fullName)
+                        </span>
+                        <div class="row">
+                            <div class="col s12">
+                                @Html.DisplayFor(modelItem => item.description)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                @foreach (var s in item.states)
+                                {
+                                    <div class="chip">
+                                        @Html.DisplayFor(modelItem => s.state.name)
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="@item.url">Visit</a>
+                        <a asp-action="Details" asp-route-id="@item.ID" class="btn waves-effect waves-light">Details</a>
+                        <a asp-action="Edit" asp-route-id="@item.ID" class="btn waves-effect waves-light">Update</a>
+                        <a asp-action="Delete" asp-route-id="@item.ID" class="btn waves-effect waves-light">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

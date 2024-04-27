@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Model";
+}
+
+<div class="container">
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">Data Source and Description</div>
+            <div class="collapsible-body">
+                <p>
+                    We have used <b>National Park Service</b> application programming interface.
+                    All the api documents and usage guides are available <a href="https://www.nps.gov/subjects/developer/api-documentation.htm">here.</a>
+                </p>
+                <p>
+                    As per NPS dataset, every national park has an associated list of activities (Ex. Arts and Culture, Biking)
+                    describing what the park is primarily famous for.
+                </p>
+                <p>
+                    Again parks have got their associated topics too. Examples include animals, archeology, arctic. We have developed
+                    here a search api to search list of parks statewise based on user selected activity and topic.
+                </p>
+                <p>
+                    In the data exploration section we are showing histogram containing the count of total number of parks for
+                    each activity and topic statewise.
+                </p>
+                <p>
+                    Below are the api end-points we have used.
+                </p>
+                <b>GET/</b> https://developer.nps.gov/api/v1/parks <br>
+                <b>GET/</b> https://developer.nps.gov/api/v1/topics <br>
+                <b>GET/</b> https://developer.nps.gov/api/v1/topics/parks <br>
+                <b>GET/</b> https://developer.nps.gov/api/v1/activities <br>
+                <b>GET/</b> https://developer.nps.gov/api/v1/activities/parks <br>
+            </div>
+        </li>
+        <li class="active">
+            <div class="collapsible-header">Data Model</div>
+            <div class="collapsible-body">
+                <img id="modelimg" src="@Url.Content("~/img/datamodel.png")">
+                <p>
+                    The data model essentially contains two many-to-many relationships. One between the entity <b><i>Parks</i></b>
+                    and <b><i>Activities</i></b> and another between <b><i>Parks</i></b> and <b><i>Topic</i></b>. To facilitate
+                    easy transition from logical model to stuctural schema diagram, we have broken down each many-to-many relationship with
+                    two one-to-many relationships.
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">Collaboration</div>
+            <div class="collapsible-body">
+                <p> We have used github to collaborate across the team during various stages of bug-fixing and development</p>
+            </div>
+        </li>
+    </ul>
+</div>

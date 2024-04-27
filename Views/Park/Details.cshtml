@@ -1,0 +1,69 @@
+﻿
+@model NatureNexus.Models.Park
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <span class="card-title" style="text-align:center; font-weight: 200;">
+                            <b>Details: @Html.DisplayFor(model => model.fullName)</b>
+                        </span>
+                    </div>
+                    <div class="row">
+                        <div class="col s2"><b>Park Code</b></div>
+                        <div class="col s10">@Html.DisplayFor(model => model.parkCode)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2"><b>Park Name</b></div>
+                        <div class="col s10">@Html.DisplayFor(model => model.fullName)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2"><b>Description</b></div>
+                        <div class="col s10"><blockquote>@Html.DisplayFor(model => model.description)</blockquote></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2"><b>State</b></div>
+                        <div class="col s10">
+                            @foreach (var item in Model.states)
+                            {
+                                <div class="chip">
+                                    @Html.DisplayFor(modelItem => item.state.name)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2"><b>Activities</b></div>
+                        <div class="col s10">
+                            @foreach (var item in Model.activities)
+                            {
+                                <div class="chip">
+                                    @Html.DisplayFor(modelItem => item.activity.name)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2"><b>Topics</b></div>
+                        <div class="col s10">
+                            @foreach (var item in Model.topics)
+                            {
+                                <div class="chip">
+                                    @Html.DisplayFor(modelItem => item.topic.name)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a href="@Model.url">Visit</a>
+                    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn waves-effect waves-light">Update</a>
+                    <a asp-action="Delete" asp-route-id="@Model.ID" class="btn waves-effect waves-light">Delete</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
