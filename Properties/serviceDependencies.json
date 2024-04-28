@@ -2,7 +2,8 @@
   "dependencies": {
     "mssql1": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:NatureNexusContext"
+      "connectionId": "ConnectionStrings:NatureNexusContext",
+      "dynamicId": null
     }
   }
 }
