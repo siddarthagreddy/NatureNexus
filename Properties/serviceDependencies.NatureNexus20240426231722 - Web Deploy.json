@@ -4,8 +4,7 @@
       "secretStore": "AzureAppSettings",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/naturenexusdbserver/databases/NatureNexus_db",
       "type": "mssql.azure",
-      "connectionId": "ConnectionStrings:NatureNexusContext",
-      "dynamicId": null
+      "connectionId": "ConnectionStrings:NatureNexusContext"
     }
   }
 }
